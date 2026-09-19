@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Boot Locker</title>
+<meta name="description" content="Boot Locker - genuine football boots by UK size, updated live.">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Outfit:wght@400;500;600;800;900&display=swap">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #fbf9f9;
+    --ink: #1a1a1a;
+    --muted: #57514f;
+    --wordmark: #555555;
+    --red: #dc0812;
+    --red-text: #d6251d;
+    --card: #ffffff;
+    --line: #e5dfde;
+    --photo: #f3f4f4;
+    --band: #1a1a1a;
+    --band-ink: #ffffff;
+    --band-muted: #d2cccb;
+    --band-red: #ef5147;
+    --font-display: "League Gothic", Impact, "Arial Narrow", sans-serif;
+    --font-body: "Outfit", "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141212;
+      --ink: #f6f2f1;
+      --muted: #bdb6b4;
+      --red-text: #ef5147;
+      --card: #1f1c1c;
+      --line: #342f2f;
+      --band: #1f1c1c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141212;
+    --ink: #f6f2f1;
+    --muted: #bdb6b4;
+    --red-text: #ef5147;
+    --card: #1f1c1c;
+    --line: #342f2f;
+    --band: #1f1c1c;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 17px/1.55 var(--font-body);
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--red-text); outline-offset: 3px; }
+
+  .wrap { width: 100%; max-width: 1160px; margin-inline: auto; padding-inline: 20px; }
+
+  /* ---------- Header ---------- */
+  .top { padding-block: 36px 44px; }
+  .top .wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 28px 40px; flex-wrap: wrap; }
+  .brand { text-decoration: none; display: block; }
+  .wordmark {
+    margin: 0;
+    font: 900 clamp(64px, 13vw, 150px)/0.86 var(--font-body);
+    letter-spacing: -0.025em;
+    color: var(--wordmark);
+    text-transform: uppercase;
+  }
+  .wordmark .row { display: flex; align-items: center; gap: 0.18em; }
+  .wordmark img { width: 0.95em; height: 0.95em; display: block; }
+  .nav { display: flex; flex-direction: column; gap: 10px; padding-top: 6px; }
+  .nav a {
+    font: 800 clamp(20px, 2.4vw, 28px)/1.2 var(--font-body);
+    color: var(--red-text);
+    text-underline-offset: 5px;
+    text-decoration-thickness: 3px;
+  }
+  .nav a:hover { color: var(--ink); }
+  @media (max-width: 720px) { .nav { flex-direction: row; flex-wrap: wrap; gap: 8px 22px; } }
+
+  /* ---------- Dark bands (About, Contact) ---------- */
+  .band { background: var(--band); color: var(--band-ink); padding-block: clamp(56px, 9vw, 104px); }
+  .band h2 {
+    margin: 0 0 clamp(28px, 5vw, 56px);
+    font: 900 clamp(44px, 8.5vw, 96px)/1 var(--font-body);
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+    text-wrap: balance;
+  }
+  .band h2 em { font-style: normal; color: var(--band-red); }
+  .about-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 36px clamp(32px, 6vw, 88px); align-items: start; }
+  .about-grid p { margin: 0 0 1em; font-size: clamp(17px, 1.6vw, 20px); color: var(--band-muted); max-width: 34em; }
+  .about-grid strong { color: var(--band-red); font-weight: 600; }
+  .about-key { justify-self: end; width: min(100%, 250px); }
+  .about-key img { width: 100%; height: auto; display: block; }
+  @media (max-width: 800px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-key { justify-self: start; width: 140px; order: -1; }
+  }
+
+  /* ---------- Inside the Locker ---------- */
+  .locker { padding-block: clamp(56px, 9vw, 104px); }
+  .locker h2 {
+    margin: 0;
+    font: 400 clamp(56px, 10vw, 112px)/0.95 var(--font-display);
+    text-transform: lowercase;
+  }
+  .locker h2 em { font-style: normal; color: var(--red-text); }
+  .locker .lede { margin: 14px 0 0; color: var(--muted); }
+
+  .sizes { display: flex; flex-wrap: wrap; gap: 10px; margin: 32px 0 8px; padding: 0; list-style: none; }
+  .chip {
+    appearance: none; cursor: pointer;
+    font: 800 20px/1 var(--font-display); letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 13px 22px 11px;
+    border: 2px solid var(--ink); border-radius: 999px;
+    background: transparent; color: var(--ink);
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .chip { font-family: var(--font-display); font-weight: 400; font-size: 24px; }
+  .chip:hover { border-color: var(--red-text); color: var(--red-text); }
+  .chip[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: #fff; }
+
+  .size-block { margin-top: clamp(36px, 6vw, 64px); }
+  .size-title {
+    margin: 0 0 22px; display: flex; align-items: baseline; gap: 14px;
+    font: 400 clamp(38px, 5.5vw, 60px)/1 var(--font-display); text-transform: uppercase;
+  }
+  .size-title span { color: var(--red-text); }
+  .size-title small { font: 500 15px/1 var(--font-body); color: var(--muted); text-transform: none; letter-spacing: 0; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 26px; }
+  .boot { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); }
+  .photo { position: relative; aspect-ratio: 6 / 5; background: var(--photo); display: grid; place-items: center; overflow: hidden; }
+  .photo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .photo .soon { display: flex; flex-direction: column; align-items: center; gap: 10px; color: #7b7473; font: 600 14px/1 var(--font-body); letter-spacing: 0.08em; text-transform: uppercase; }
+  .photo .soon img { width: 64px; height: 64px; opacity: .9; }
+  .tag {
+    position: absolute; left: 0; top: 0; background: var(--red); color: #fff;
+    font: 400 22px/1 var(--font-display); letter-spacing: 0.05em; padding: 9px 12px 7px; text-transform: uppercase;
+  }
+  .sold .photo img { filter: grayscale(1); opacity: .55; }
+  .sold-flag {
+    position: absolute; right: 0; bottom: 0; background: var(--ink); color: var(--bg);
+    font: 400 20px/1 var(--font-display); letter-spacing: 0.08em; padding: 8px 12px 6px;
+  }
+  .info { display: flex; flex-direction: column; gap: 10px; padding: 18px 18px 20px; flex: 1; }
+  .info h4 { margin: 0; font: 700 17px/1.3 var(--font-body); text-wrap: balance; }
+  .price { margin: auto 0 0; font: 800 22px/1 var(--font-body); font-variant-numeric: tabular-nums; }
+  .price b { color: var(--red-text); font-weight: 800; }
+  .buy {
+    display: flex; justify-content: center; align-items: center; gap: 10px;
+    margin-top: 6px; padding: 14px 20px;
+    border: 2px solid var(--ink); border-radius: 999px;
+    color: var(--ink); text-decoration: none;
+    font: 800 17px/1 var(--font-body); letter-spacing: 0.06em; text-transform: uppercase;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .buy:hover { background: var(--red); border-color: var(--red); color: #fff; }
+  .buy .arr { transition: transform .15s; }
+  .buy:hover .arr { transform: translateX(4px); }
+  .buy[aria-disabled="true"] { border-color: var(--line); color: var(--muted); pointer-events: none; }
+  .note { margin: 26px 0 0; color: var(--muted); font-size: 15px; }
+  .empty { color: var(--muted); padding: 24px 0; }
+
+  /* ---------- Contact ---------- */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px clamp(32px, 6vw, 88px); align-items: end; }
+  .contact-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: clamp(19px, 2.2vw, 26px); font-weight: 600; }
+  .contact-list a { text-decoration: none; }
+  .contact-list a:hover { text-decoration: underline; text-underline-offset: 5px; }
+  .contact-list .k { color: var(--band-ink); }
+  .contact-list .v { color: var(--band-red); }
+  .foot-mark { margin: 0; font: 900 clamp(48px, 9vw, 112px)/0.86 var(--font-body); letter-spacing: -0.025em; text-transform: uppercase; color: #555; }
+  .foot-mark .row { display: flex; align-items: center; gap: 0.18em; }
+  .foot-mark img { width: 0.95em; height: 0.95em; display: block; }
+  @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  .legal { background: var(--band); color: var(--band-muted); font-size: 14px; padding-block: 0 28px; }
+  .legal .wrap { border-top: 1px solid #3b3636; padding-top: 20px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+
+</head>
+<body>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Boot Locker home">
+      <h1 class="wordmark">
+        <span class="row"><span>Boot</span><img src="images/logo.png" alt="" width="320" height="320"></span>
+        <span class="row"><span>Locker</span></span>
+      </h1>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#about">About us</a>
+      <a href="#locker">Inside the Locker</a>
+      <a href="#contact">Contact us</a>
+    </nav>
+  </div>
+</header>
+
+<section class="band" id="about" aria-labelledby="about-h">
+  <div class="wrap">
+    <h2 id="about-h">the key to<br>the <em>locker</em></h2>
+    <div class="about-grid">
+      <div>
+        <p>Boot Locker is a football boot store built by someone who knows the constant pull to keep up with the <strong>newest releases</strong> &mdash; or the <strong>retro classics</strong> everyone wants back.</p>
+        <p>Every pair is a genuine boot, priced fairly so you get real quality for your money.</p>
+      </div>
+      <div>
+        <p>We <strong>update our stock live</strong>. If your size is in the locker, you can buy it right now.</p>
+        <p>Not spotted your size or boot yet? Message us and we&rsquo;ll keep an eye out for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="locker" id="locker" aria-labelledby="locker-h">
+  <div class="wrap">
+    <h2 id="locker-h">inside the <em>locker</em></h2>
+    <p class="lede">Pick your UK size to see what&rsquo;s in stock.</p>
+    <ul class="sizes" id="sizes" aria-label="Filter by UK size"></ul>
+    <div id="stock" aria-live="polite"></div>
+    <p class="note" id="stock-note"></p>
+  </div>
+</main>
+
+<footer class="band" id="contact" aria-labelledby="contact-h">
+  <div class="wrap">
+    <h2 id="contact-h">contact <em>us</em></h2>
+    <div class="contact-grid">
+      <ul class="contact-list" id="contact-list"></ul>
+      <p class="foot-mark" aria-hidden="true">
+        <span class="row"><span>Boot</span><img src="images/logo.png" alt="" width="320" height="320"></span>
+        <span class="row"><span>Locker</span></span>
+      </p>
+    </div>
+  </div>
+</footer>
+<div class="legal"><div class="wrap">&copy; <span id="yr"></span> Boot Locker. Brand names such as Nike and Adidas belong to their respective owners and are used only to describe the boots for sale.</div></div>
+
+<script src="boots.js"></script>
+<script>
+(function () {
+  var SHOP = window.SHOP || {};
+  var BOOTS = (window.BOOTS || []).slice();
+  var IG = "https://www.instagram.com/" + (SHOP.instagram || "");
+  var active = "all";
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function sizeLabel(s) { return "UK " + s; }
+  function priceNode(p) {
+    var wrap = el("p", "price");
+    wrap.appendChild(document.createTextNode("£"));
+    wrap.appendChild(el("b", null, Number(p).toFixed(2)));
+    return wrap;
+  }
+
+  function card(b) {
+    var art = el("article", "boot" + (b.inStock === false ? " sold" : ""));
+
+    var photo = el("div", "photo");
+    if (b.image) {
+      var img = el("img");
+      img.src = b.image;
+      img.alt = b.name;
+      img.loading = "lazy";
+      photo.appendChild(img);
+    } else {
+      var soon = el("div", "soon");
+      var lg = el("img"); lg.src = "images/logo.png"; lg.alt = "";
+      soon.appendChild(lg);
+      soon.appendChild(el("span", null, "Photo coming soon"));
+      photo.appendChild(soon);
+    }
+    photo.appendChild(el("span", "tag", sizeLabel(b.size)));
+    if (b.inStock === false) photo.appendChild(el("span", "sold-flag", "Sold out"));
+    art.appendChild(photo);
+
+    var info = el("div", "info");
+    info.appendChild(el("h4", null, b.name));
+    info.appendChild(priceNode(b.price));
+
+    var a = el("a", "buy");
+    if (b.inStock === false) {
+      a.setAttribute("aria-disabled", "true");
+      a.appendChild(el("span", null, "Sold out"));
+    } else {
+      a.href = b.stripe || IG;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.appendChild(el("span", null, b.stripe ? "Buy now" : "Message to buy"));
+      a.appendChild(el("span", "arr", "→"));
+    }
+    info.appendChild(a);
+    art.appendChild(info);
+    return art;
+  }
+
+  function render() {
+    var stock = document.getElementById("stock");
+    stock.textContent = "";
+    var sizes = [];
+    BOOTS.forEach(function (b) { if (sizes.indexOf(b.size) === -1) sizes.push(b.size); });
+    sizes.sort(function (x, y) { return x - y; });
+
+    var shown = sizes.filter(function (s) { return active === "all" || String(s) === String(active); });
+    if (!shown.length) { stock.appendChild(el("p", "empty", "Nothing in the locker for that size right now.")); return; }
+
+    shown.forEach(function (s) {
+      var items = BOOTS.filter(function (b) { return b.size === s; });
+      var block = el("section", "size-block");
+      var t = el("h3", "size-title");
+      t.appendChild(document.createTextNode("Size "));
+      t.appendChild(el("span", null, String(s) + " UK"));
+      t.appendChild(el("small", null, items.length + (items.length === 1 ? " boot" : " boots")));
+      block.appendChild(t);
+      var grid = el("div", "grid");
+      items.forEach(function (b) { grid.appendChild(card(b)); });
+      block.appendChild(grid);
+      stock.appendChild(block);
+    });
+  }
+
+  function renderChips() {
+    var ul = document.getElementById("sizes");
+    ul.textContent = "";
+    var sizes = [];
+    BOOTS.forEach(function (b) { if (sizes.indexOf(b.size) === -1) sizes.push(b.size); });
+    sizes.sort(function (x, y) { return x - y; });
+    [["all", "All sizes"]].concat(sizes.map(function (s) { return [s, "Size " + s]; })).forEach(function (pair) {
+      var li = el("li");
+      var btn = el("button", "chip", pair[1]);
+      btn.type = "button";
+      btn.id = "chip-" + pair[0];
+      btn.setAttribute("aria-pressed", String(String(pair[0]) === String(active)));
+      btn.addEventListener("click", function () { active = pair[0]; renderChips(); render(); });
+      li.appendChild(btn);
+      ul.appendChild(li);
+    });
+  }
+
+  function renderContact() {
+    var ul = document.getElementById("contact-list");
+    function row(label, valueText, href) {
+      var li = el("li");
+      li.appendChild(el("span", "k", label + " "));
+      var v = el("span", "v");
+      if (href) { var a = el("a", null, valueText); a.href = href; a.target = "_blank"; a.rel = "noopener"; v.appendChild(a); }
+      else v.textContent = valueText;
+      li.appendChild(v);
+      ul.appendChild(li);
+    }
+    if (SHOP.tiktok) row("TikTok:", "@" + SHOP.tiktok, "https://www.tiktok.com/@" + SHOP.tiktok);
+    if (SHOP.instagram) row("Instagram:", "@" + SHOP.instagram, IG);
+    if (SHOP.phone) row("Phone:", SHOP.phone, SHOP.phoneLink ? "tel:" + SHOP.phoneLink : null);
+  }
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+  document.getElementById("stock-note").textContent = "Sizes are UK. Stock is updated live — if a boot shows Sold out, it’s gone.";
+  renderChips();
+  render();
+  renderContact();
+})();
+</script>
+</body>
+</html>
