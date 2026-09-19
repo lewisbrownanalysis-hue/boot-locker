@@ -10,7 +10,7 @@
      size      UK size as a number, e.g. 7 or 8.5
                 (one entry per size — a boot in two sizes = two entries)
      price     number in pounds, e.g. 99.99
-     image     path to the photo, e.g. "images/my-boot.png"
+     image     path to the photo, e.g. "my-boot.png"
                 (leave "" to show a "photo coming soon" panel)
      stripe    your Stripe Payment Link for this boot + size
                 (leave "" and the button opens your Instagram instead)
@@ -32,7 +32,7 @@ window.BOOTS = [
     name: "Nike Mercurial Vapor XI Neymar FG football boot in the \"Blue Orbit\"",
     size: 7,
     price: 99.99,
-    image: "images/nike-neymar-blue-orbit.png",
+    image: "nike-neymar-blue-orbit.png",
     stripe: "",
     inStock: true
   },
@@ -40,7 +40,7 @@ window.BOOTS = [
     name: "Nike Mercurial Vapor XI FG Fire Pack",
     size: 7,
     price: 99.99,
-    image: "images/nike-vapor-xi-fire-pack.png",
+    image: "nike-vapor-xi-fire-pack.png",
     stripe: "",
     inStock: true
   },
@@ -48,7 +48,7 @@ window.BOOTS = [
     name: "Nike Mercurial Vapor XI Neymar FG football boot in the \"Blue Orbit\"",
     size: 8,
     price: 99.99,
-    image: "images/nike-neymar-blue-orbit.png",
+    image: "nike-neymar-blue-orbit.png",
     stripe: "",
     inStock: true
   },
@@ -56,7 +56,7 @@ window.BOOTS = [
     name: "Nike Mercurial Vapor XI FG Fire Pack",
     size: 8,
     price: 99.99,
-    image: "images/nike-vapor-xi-fire-pack.png",
+    image: "nike-vapor-xi-fire-pack.png",
     stripe: "",
     inStock: true
   },
