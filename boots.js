@@ -28,44 +28,16 @@ window.SHOP = {
 };
 
 window.BOOTS = [
+  /* No boots in the locker right now.
+     To add one, paste a block like this between the [ ] brackets:
+
   {
-    name: "Nike Mercurial Vapor XI Neymar FG football boot in the \"Blue Orbit\"",
-    size: 7,
-    price: 99.99,
-    image: "nike-neymar-blue-orbit.png",
-    stripe: "",
-    inStock: true
-  },
-  {
-    name: "Nike Mercurial Vapor XI FG Fire Pack",
-    size: 7,
-    price: 99.99,
-    image: "nike-vapor-xi-fire-pack.png",
-    stripe: "",
-    inStock: true
-  },
-  {
-    name: "Nike Mercurial Vapor XI Neymar FG football boot in the \"Blue Orbit\"",
+    name: "Boot name shown to customers",
     size: 8,
     price: 99.99,
-    image: "nike-neymar-blue-orbit.png",
-    stripe: "",
+    image: "my-boot.png",
+    stripe: "https://buy.stripe.com/your-link",
     inStock: true
   },
-  {
-    name: "Nike Mercurial Vapor XI FG Fire Pack",
-    size: 8,
-    price: 99.99,
-    image: "nike-vapor-xi-fire-pack.png",
-    stripe: "",
-    inStock: true
-  },
-  {
-    name: "Adidas Predator laceless firm ground Elite",
-    size: 9,
-    price: 99.99,
-    image: "",
-    stripe: "",
-    inStock: true
-  }
+  */
 ];
